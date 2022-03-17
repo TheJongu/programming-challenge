@@ -12,17 +12,17 @@ import java.util.List;
 
 import com.opencsv.CSVReader;
 
+import de.jgu.weather.WeatherDTO;
+
 public class CSVParser {
 	
-	
-
-	CSVReader CSVReader;
+	private CSVReader CSVReader;
 	// Named columns
-	private List<String> headLine;
+	protected List<String> headLine;
 	// Values in the CSV
 	// List[ ] = row in the file
 	// String[index] = column of the row
-	private List<String[]> values;
+	protected List<String[]> values;
 
 	public CSVParser(){
 		// Create empty Parser
