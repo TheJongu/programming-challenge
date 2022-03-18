@@ -1,22 +1,15 @@
 package de.jgu.parser;
 
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
 import com.opencsv.CSVReader;
 
-import de.jgu.weather.WeatherDTO;
-
 public class CSVParser {
 	
-	private CSVReader CSVReader;
 	// Named columns
 	protected List<String> headLine;
 	// Values in the CSV
@@ -29,11 +22,15 @@ public class CSVParser {
 		System.out.println("Parser has been created");
 	}
 	
+	/**
+	 * Parses a given Path to a CSV File into the internal headLine and values Attributes
+	 * @param aCSVFilePath full path to csv file
+	 * @return boolean if Parsing was successful
+	 */
 	public boolean parseFile(String aCSVFilePath) {
 		// new File is parsed, remove old information
 		headLine = null;
 		values = null;
-		CSVReader = null;
 		
 		try (CSVReader reader = new CSVReader(new FileReader(aCSVFilePath))) {
 			List<String[]> csvRowList = reader.readAll();
@@ -69,6 +66,23 @@ public class CSVParser {
 	}
 	
 	/**
+	 * Parse a int from aCell
+	 * @param aCell the Cell from a Row
+	 * @return int Value from the Cell
+	 */
+	protected int parseIntValueFromCell(String aCell) {
+		return Integer.parseInt(aCell.trim());
+	}
+	
+	/**
+	 * Parse a double from aCell
+	 * @param aCell the Cell from a Row
+	 * @return double Value from the Cell
+	 */
+	protected double parseDoubleValueFromCell(String aCell) {
+		return Double.parseDouble(aCell.trim());
+	}
+	/**
 	 * Print the parsed File
 	 */
 	public void printParsedFile() {
@@ -76,7 +90,6 @@ public class CSVParser {
 			System.out.println("No File Parsed");
 			return;
 		}
-		
 		// Print headline
 		this.headLine.stream().forEach(s -> System.out.print(s.toString() + ", "));
 		// print values in Rows

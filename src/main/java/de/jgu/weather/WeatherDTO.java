@@ -2,9 +2,30 @@ package de.jgu.weather;
 
 public class WeatherDTO {
 
-	
+	/**
+	 * Empty constructor
+	 */
 	public WeatherDTO() {
 		// Object is empty, is filled when its needed
+	}
+	
+	@Override
+	public String toString() {
+		String theString = "day: " + day;
+		theString += ", mxt: " + mxt;
+		theString += ", mnt: " + mnt;
+		theString += ", avt: " + avt;
+		theString += ", avdp: " + avdp;
+		theString += ", hrp_pcpn: " + hrp_pcpn;
+		theString += ", pdir: " + pdir;
+		theString += ", avsp: " + avsp;
+		theString += ", dir: " + dir;
+		theString += ", mxs: " + mxs;
+		theString += ", skyc: " + skyc;
+		theString += ", mxr: " + mxr;
+		theString += ", mn: " + mn;
+		theString += ", r_avslp: " + r_avslp;
+		return theString;
 	}
 	
 	// attributes taken from CSV File
@@ -12,16 +33,16 @@ public class WeatherDTO {
 		private int mxt;
 		private int mnt;
 		private int avt;
-		private int avdp;
-		private int hrp_pcpn;
+		private double avdp;
+		private double hrp_pcpn;
 		private int pdir;
-		private int avsp;
+		private double avsp;
 		private int dir;
 		private int mxs;
-		private int skyc;
+		private double skyc;
 		private int mxr;
 		private int mn;
-		private int r_avslp;
+		private double r_avslp;
 		
 		
 	// generated getter&setter
@@ -43,16 +64,16 @@ public class WeatherDTO {
 	public void setAvt(int avt) {
 		this.avt = avt;
 	}
-	public int getAvdp() {
+	public double getAvdp() {
 		return avdp;
 	}
-	public void setAvdp(int avdp) {
+	public void setAvdp(double avdp) {
 		this.avdp = avdp;
 	}
-	public int getHrp_pcpn() {
+	public double getHrp_pcpn() {
 		return hrp_pcpn;
 	}
-	public void setHrp_pcpn(int hrp_pcpn) {
+	public void setHrp_pcpn(double hrp_pcpn) {
 		this.hrp_pcpn = hrp_pcpn;
 	}
 	public int getPdir() {
@@ -61,10 +82,10 @@ public class WeatherDTO {
 	public void setPdir(int pdir) {
 		this.pdir = pdir;
 	}
-	public int getAvsp() {
+	public double getAvsp() {
 		return avsp;
 	}
-	public void setAvsp(int avsp) {
+	public void setAvsp(double avsp) {
 		this.avsp = avsp;
 	}
 	public int getDir() {
@@ -79,10 +100,10 @@ public class WeatherDTO {
 	public void setMxs(int mxs) {
 		this.mxs = mxs;
 	}
-	public int getSkyc() {
+	public double getSkyc() {
 		return skyc;
 	}
-	public void setSkyc(int skyc) {
+	public void setSkyc(double skyc) {
 		this.skyc = skyc;
 	}
 	public int getMxr() {
@@ -97,10 +118,10 @@ public class WeatherDTO {
 	public void setMn(int mn) {
 		this.mn = mn;
 	}
-	public int getR_avslp() {
+	public double getR_avslp() {
 		return r_avslp;
 	}
-	public void setR_avslp(int r_avslp) {
+	public void setR_avslp(double r_avslp) {
 		this.r_avslp = r_avslp;
 	}	
 	public int getDay() {
