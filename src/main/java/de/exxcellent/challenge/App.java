@@ -13,6 +13,7 @@ import de.jgu.weather.WeatherParser;
  * The entry class for your solution. This class is only aimed as starting point and not intended as baseline for your software
  * design. Read: create your own classes and packages as appropriate.
  *
+ *
  * @author Benjamin Schmid <benjamin.schmid@exxcellent.de>
  */
 public final class App {
@@ -37,16 +38,16 @@ public final class App {
     private static String findDayWithSmallestTempSpread(){
     	WeatherParser theWeatherParser =  new WeatherParser();
     	theWeatherParser.parseFile(App.getWeatherPath());
-    	List<WeatherDTO> convertToWeatherDTO = theWeatherParser.convertToWeatherDTO();
+    	List<WeatherDTO> theWeatherDtos = theWeatherParser.convertToWeatherDTO();
     	// get lowest WeatherSpread
-    	Optional<WeatherDTO> minDTO = convertToWeatherDTO.stream()
+    	Optional<WeatherDTO> theOptional = theWeatherDtos.stream()
     			.min((dto1, dto2) -> Integer.compare(
 	    			Math.abs(dto1.getMxt() - dto1.getMnt()), 
 	    			Math.abs(dto2.getMxt() - dto2.getMnt())));
-    	if(minDTO.isEmpty()) {
+    	if(theOptional.isEmpty()) {
     		return "No day found";
     	}
-    	return String.valueOf(minDTO.get().getDay());
+    	return String.valueOf(theOptional.get().getDay());
     }
     
     /**
@@ -56,34 +57,37 @@ public final class App {
     private static String findDayWithSmallestGoalSpread(){
     	FootballParser theFootballParser =  new FootballParser();
     	theFootballParser.parseFile(App.getFootballPath());
-    	List<FootballDTO> convertToWeatherDTO = theFootballParser.convertToFootballDTO();
+    	List<FootballDTO> theFootballDtos = theFootballParser.convertToFootballDTO();
     	// get lowest GoalSpread
-    	Optional<FootballDTO> minDTO = convertToWeatherDTO.stream()
+    	Optional<FootballDTO> theOptionalDTO = theFootballDtos.stream()
     			.min((dto1, dto2) -> Integer.compare(
 	    			Math.abs(dto1.getGoals() - dto1.getGoalsAllowed()), 
 	    			Math.abs(dto2.getGoals() - dto2.getGoalsAllowed())));
-    	if(minDTO.isEmpty()) {
+    	if(theOptionalDTO.isEmpty()) {
     		return "No Team found";
     	}
-    	return String.valueOf(minDTO.get().getTeam());
+    	return String.valueOf(theOptionalDTO.get().getTeam());
     }
     
     /**
      * @return the Path to the Weather File
      */
     public static String getWeatherPath() {
+    	 //	Only for Windows
     	return getProjectPath() + "\\src\\main\\resources\\de\\exxcellent\\challenge\\weather.csv";
     }
     /**
      * @return the Path to the Football File
      */
     public static String getFootballPath() {
+    	//	Only for Windows	
     	return getProjectPath() + "\\src\\main\\resources\\de\\exxcellent\\challenge\\football.csv";
     }
     /**
      * @return Get the Path to the Project
      */
     public static String getProjectPath() {
+    	//	Only for Windows
     	String thePath = new File(".").getAbsolutePath();
     	// remove trailing \ and .
     	return thePath.substring(0, thePath.length() - 2);

@@ -1,5 +1,9 @@
 package de.jgu.football;
 
+/**
+ * Class to hold Football-Data from a CSV File.
+ *
+ */
 public class FootballDTO {
 
 	private String Team;

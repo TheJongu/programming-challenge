@@ -32,7 +32,7 @@ class AppTest {
     @BeforeEach
     void footballFileExists() {
     	// A file with name football.csv in resources dir is available
-   	 	assertTrue(App.getWeatherPath().endsWith("src\\main\\resources\\de\\exxcellent\\challenge\\football.csv"));
+   	 	assertTrue(App.getFootballPath().endsWith("src\\main\\resources\\de\\exxcellent\\challenge\\football.csv"));
     }
 
     @BeforeEach
@@ -60,9 +60,9 @@ class AppTest {
     	// A file with name weather.csv in resources dir is available 
     	WeatherParser theWeatherParser = new WeatherParser();
     	List<WeatherDTO> theWeatherDTOList = theWeatherParser.convertToWeatherDTO();
-    	assertNull(theWeatherDTOList);
+    	assertTrue(theWeatherDTOList.size() == 0, "theWeatherDTOList was populated with Objects, where there should have been none");
     	
-    	theWeatherParser.parseFile(App.getFootballPath());
+    	theWeatherParser.parseFile(App.getWeatherPath());
     	theWeatherDTOList = theWeatherParser.convertToWeatherDTO();
     	// expect at least a list object
     	assertNotNull(theWeatherDTOList);
@@ -73,13 +73,13 @@ class AppTest {
     @Test
     void footballParserTest() {
     	// A file with name weather.csv in resources dir is available 
-    	FootballParser theWeatherParser = new FootballParser();
-    	List<FootballDTO> theFootballDTOList = theWeatherParser.convertToFootballDTO();
+    	FootballParser theFootballParser = new FootballParser();
+    	List<FootballDTO> theFootballDTOList = theFootballParser.convertToFootballDTO();
     	// no file Read; Empty Result
-    	assertNull(theFootballDTOList);
+    	assertTrue(theFootballDTOList.size() == 0, "theFootballDTOList was populated with Objects, where there should have been none");
     	
-    	theWeatherParser.parseFile(App.getFootballPath());
-    	theFootballDTOList = theWeatherParser.convertToFootballDTO();
+    	theFootballParser.parseFile(App.getFootballPath());
+    	theFootballDTOList = theFootballParser.convertToFootballDTO();
     	// expect at least a list object
     	assertNotNull(theFootballDTOList);
     	// expect at least one dto object in the list

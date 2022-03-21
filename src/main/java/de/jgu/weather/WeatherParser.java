@@ -5,6 +5,11 @@ import java.util.List;
 
 import de.jgu.parser.CSVParser;
 
+/**
+ * Parser for a Weather CSV File
+ * Data will be parsed into a {@link WeatherDTO}
+ * 
+ */
 public class WeatherParser extends CSVParser{
 
 	/**
@@ -61,5 +66,4 @@ public class WeatherParser extends CSVParser{
 		theWeatherDTO.setR_avslp(parseDoubleValueFromCell(aRow[13].trim()));
 		return theWeatherDTO;
 	}
-	
 }

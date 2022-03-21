@@ -14,12 +14,11 @@ public class CSVParser {
 	protected List<String> headLine;
 	// Values in the CSV
 	// List[ ] = row in the file
-	// String[index] = column of the row
+	// String[index] = column of the row (each Index, one cell)
 	protected List<String[]> values;
 
 	public CSVParser(){
 		// Create empty Parser
-		System.out.println("Parser has been created");
 	}
 	
 	/**
@@ -33,9 +32,10 @@ public class CSVParser {
 		values = null;
 		
 		try (CSVReader reader = new CSVReader(new FileReader(aCSVFilePath))) {
+			// Using CSVReader to Read the File
 			List<String[]> csvRowList = reader.readAll();
-		    
 			Iterator<String[]> csvIterator = csvRowList.iterator();
+			// Parse Data
 			while(csvIterator.hasNext()) {
 				String[] nextRow = csvIterator.next();
 				// headline
@@ -71,7 +71,9 @@ public class CSVParser {
 	 * @return int Value from the Cell
 	 */
 	protected int parseIntValueFromCell(String aCell) {
+		// unhandled exception will stop the programm
 		return Integer.parseInt(aCell.trim());
+		
 	}
 	
 	/**
@@ -80,6 +82,7 @@ public class CSVParser {
 	 * @return double Value from the Cell
 	 */
 	protected double parseDoubleValueFromCell(String aCell) {
+		// unhandled exception will stop the programm
 		return Double.parseDouble(aCell.trim());
 	}
 	/**
@@ -109,6 +112,5 @@ public class CSVParser {
 
 	public List<String[]> getValues() {
 		return values;
-	}
-	
+	}	
 }

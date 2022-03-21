@@ -5,6 +5,11 @@ import java.util.List;
 
 import de.jgu.parser.CSVParser;
 
+/**
+ * Parser for a Football CSV File
+ * Data will be parsed into a {@link FootballDTO}
+ *
+ */
 public class FootballParser extends CSVParser{
 
 	/**
@@ -49,5 +54,4 @@ public class FootballParser extends CSVParser{
 		theFootballDTO.setPoints(parseIntValueFromCell(aRow[7].trim()));
 		return theFootballDTO;
 	}
-	
 }

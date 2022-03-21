@@ -1,5 +1,9 @@
 package de.jgu.weather;
 
+/**
+ * Class to hold  Weather-Data from a CSV File.
+ *
+ */
 public class WeatherDTO {
 
 	/**
